@@ -22,12 +22,20 @@ function Header() {
           about
         </NavLink>
         <NavLink
-          to="/user/:userid"
+          to="/user"
           className={({ isActive }) =>
             isActive ? 'text-orange-700' : 'text-gray-7000'
           }
         >
           user
+        </NavLink>
+        <NavLink
+          to="/github"
+          className={({ isActive }) =>
+            isActive ? 'text-orange-700' : 'text-gray-7000'
+          }
+        >
+          github
         </NavLink>
       </div>
     </header>
