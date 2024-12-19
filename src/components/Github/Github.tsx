@@ -1,17 +1,21 @@
 import React, { useEffect } from 'react'
+import { useLoaderData } from 'react-router-dom'
 
 
 function Github() {
-    const [data, setData] = React.useState([])
+    // const [data, setData] = React.useState([])
 
-    useEffect(() => {
-        fetch('https://api.github.com/users/arupsaha07')
-            .then(response => response.json())
-            .then(data => {
-                console.log(data)
-                setData(data)
-            })
-    }, [])
+    // useEffect(() => {
+    //     fetch('https://api.github.com/users/arupsaha07')
+    //         .then(response => response.json())
+    //         .then(data => {
+    //             console.log(data)
+    //             setData(data)
+    //         })
+    // }, [])
+
+    useLoaderData()
+    const data = useLoaderData()
 
     return (
         <figure className="inline-flex bg-slate-100 rounded-xl p-8 md:p-0 dark:bg-slate-700 w-auto">
@@ -34,3 +38,8 @@ function Github() {
 }
 
 export default Github
+
+export const githubInfoLoader = async () => {
+    const response = await fetch('https://api.github.com/users/arupsaha07')
+    return response.json()
+}
