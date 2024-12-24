@@ -14,7 +14,7 @@ function Github() {
     //         })
     // }, [])
 
-    useLoaderData()
+    
     const data = useLoaderData()
 
     return (
