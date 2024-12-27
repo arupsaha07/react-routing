@@ -1,7 +1,14 @@
+// src/context/UserContext.ts
 import React from "react";
 
-const UserContext = React.createContext({
-    setUser: () => { },
+interface UserContextType {
+    user: { userName: string; password: string; } | null;
+    setUser: (user: { userName: string; password: string; }) => void;
+}
+
+const UserContext = React.createContext<UserContextType>({
+    user: null,
+    setUser: () => { }
 });
 
 export default UserContext;

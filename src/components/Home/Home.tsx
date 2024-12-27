@@ -1,7 +1,17 @@
-import React from 'react';
+// import UserContextProvider from "../../context/UserContextProvider";
+import Login from "../Login/Login";
+// import Profile from "../Login/Profile";
+
 
 function Home() {
-  return <h2>Home</h2>;
+  return (
+    <div className='flex-grow'>
+      {/* <UserContextProvider> */}
+        <Login />
+        {/* <Profile /> */}
+      {/* </UserContextProvider> */}
+    </div>
+  );
 }
 
 export default Home;
