@@ -11,7 +11,7 @@ import Layout from './Layout.tsx';
 import Home from './components/Home/Home.js';
 import About from './components/About/About.tsx';
 import User from './components/User/User.tsx';
-import Github, {githubInfoLoader} from './components/Github/Github.tsx';
+import Github, { githubInfoLoader } from './components/Github/Github.tsx';
 
 const router = createBrowserRouter(
   createRoutesFromElements(

@@ -1,6 +1,4 @@
-import React, { useEffect } from 'react'
 import { useLoaderData } from 'react-router-dom'
-
 
 function Github() {
     // const [data, setData] = React.useState([])
@@ -13,7 +11,6 @@ function Github() {
     //             setData(data)
     //         })
     // }, [])
-
     
     const data = useLoaderData()
 
