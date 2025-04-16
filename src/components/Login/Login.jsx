@@ -1,5 +1,6 @@
 import axios from 'axios'
 import React, { useState } from 'react'
+import Profile from './Profile'
 
 function Login() {
 
@@ -26,6 +27,7 @@ function Login() {
 
     return (
         <div className='flex flex-col items-center mx-auto max-w-80'>
+            <Profile />
             <p>Login</p>
             <input
                 type="text"
