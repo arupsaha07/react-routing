@@ -7,7 +7,7 @@ const UserContextProvider = ({ children }) => {
     const[user, setUser] = useState()
     
     useEffect(() => {
-        axios.get('https://dummyjson.com/users/1')
+        axios.get('https://api.escuelajs.co/api/v1/users/2')
         .then(res => {
             // console.log(res.data)
             setUser(res.data)

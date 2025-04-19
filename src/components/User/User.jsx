@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useContext } from "react";
 import UserContext from "../../context/UserContext";
 
 const User = () => {
@@ -7,16 +7,13 @@ const User = () => {
 
   return (
     <div>
-      <h2>User</h2>
-
       <div>
-        {user && user.firstName ? (
+        {user && user.id ? (
           <>
-            <img src={user.image} alt="" />
+            <img src={user.avatar} alt="" />
             <p>Name: {user.firstName} {user.lastName}</p>
             <p>Email: {user.email}</p>
-
-            
+            <p>Role: {user.role}</p>
           </>
         ) : (
           <p>Loading user...</p>
@@ -29,5 +26,3 @@ const User = () => {
 
 
 export default User;
-
-// use context
