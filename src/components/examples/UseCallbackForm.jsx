@@ -1,32 +1,65 @@
-import { useContext, useState } from 'react'
+import React from 'react';
 
-function UseCallbackForm(props) {
+const UseCallbackForm = React.memo(({ btnName, onSubmit }) => {
 
-    const [credentials, setCredentials] = useState({ email: '', password: '' })
-    console.log("rendering UseCallbackForm");
+    const [credentials, setCredentials] = React.useState({
+        email: '',
+        password: ''
+    });
+
+    console.log("UseCallbackForm rendered");
+
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setCredentials(prev => ({
+            ...prev,
+            [name]: value
+        }));
+    };
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        onSubmit(credentials);
+    };
 
     return (
-        <div className='flex flex-col items-center mx-auto max-w-80'>
+        <form
+            onSubmit={handleSubmit}
+            className='flex flex-col items-center mx-auto max-w-80'
+        >
+            <input
+                type="email"
+                name="email"
+                placeholder='Email'
+                className='border border-gray-500 mb-4 p-2 w-full'
+                value={credentials.email}
+                onChange={handleChange}
+                required
+            />
 
             <input
-                type="text"
-                placeholder='email'
-                className='border border-gray-500 mb-4'
-                value={credentials.email}
-                onChange={(e) => setCredentials({ ...credentials, email: e.target.value })} />
+                type="password"
+                name="password"
+                placeholder='Password'
+                className='border border-gray-500 mb-4 p-2 w-full'
+                value={credentials.password}
+                onChange={handleChange}
+                minLength="6"
+                required
+            />
 
-            <input 
-                type="text" 
-                placeholder='password'
-                className='border border-gray-500 mb-4'
-                name={credentials.password}
-                onChange={e => setCredentials({...credentials, password: e.target.value})} />
+            <button
+                type="submit"
+                className='bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 transition'
+            >
+                {btnName}
+            </button>
 
-            <div>{JSON.stringify(credentials)}</div>
+            <div className="mt-4 text-sm text-gray-600">
+                Current state: {JSON.stringify(credentials)}
+            </div>
+        </form>
+    );
+});
 
-            <button className='border border-gray-700 py-1 px-3'>{props.btnName}</button>
-        </div>
-    )
-}
-
-export default UseCallbackForm
+export default UseCallbackForm;
