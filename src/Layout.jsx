@@ -14,7 +14,7 @@ function Layout() {
           <Sidebar />
           <div className="ms-64 flex-1">
             <Header />
-            <main className="h-full">
+            <main>
               <Outlet />
             </main>
             <Footer />

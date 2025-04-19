@@ -9,22 +9,25 @@ import {
 } from 'react-router-dom';
 import Layout from './Layout.jsx';
 import UseCallbackHook from './components/examples/UseCallbackHook.jsx';
-import UseRefExample from './components/examples/UseRefExample.jsx';
+import UseContextExample from './components/examples/UseContextExample.jsx';
 import UseMemoHook from './components/examples/UseMemoHook.jsx';
 import User from './components/User/User.jsx';
 import Github, { githubInfoLoader } from './components/Github/Github.jsx';
 import Login from './components/Login/Login.jsx';
 import Profile from './components/Login/Profile.jsx';
+import ExampleHome from './components/examples/ExampleHome.jsx';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<Layout />}>
       {/* default route */}
-      <Route path="" element={<Login />} />
+      <Route path="" element={'Home'} />
+      <Route path="login" element={<Login />} />
 
       {/* code example route */}
       <Route path='example'>
-        <Route path="use-ref" element={<UseRefExample />} />
+        <Route index element={<ExampleHome />} />
+        <Route path="use-context" element={<UseContextExample />} />
         <Route path="use-callback" element={<UseCallbackHook />} />
         <Route path='use-memo' element={<UseMemoHook />} />
       </Route>
