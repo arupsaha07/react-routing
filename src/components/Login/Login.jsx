@@ -1,11 +1,14 @@
 import axios from 'axios'
 import React, { useState } from 'react'
 import Profile from './Profile'
+import { useNavigate } from 'react-router-dom'
 
 function Login() {
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+
+    const navigate = useNavigate()
 
     const handleSubmit = () => {
         const payload = {
@@ -17,6 +20,7 @@ function Login() {
         axios.post('https://api.escuelajs.co/api/v1/auth/login', payload)
             .then(res => {
                 localStorage.setItem('access_token', JSON.stringify(res.data.access_token))
+                navigate('/profile')
                 console.log('Login Successful')
             })
             .catch(err => {
@@ -27,7 +31,6 @@ function Login() {
 
     return (
         <div className='flex flex-col items-center mx-auto max-w-80'>
-            <Profile />
             <p>Login</p>
             <input
                 type="text"

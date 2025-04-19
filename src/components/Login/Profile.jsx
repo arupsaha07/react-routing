@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react'
+import { useContext, useState, useEffect } from 'react'
 import UserContext from '../../context/UserContext'
 import axios from 'axios'
 
@@ -7,6 +7,11 @@ function Profile() {
   // const user = useContext(UserContext)
 
   const [profileData, setProfileData] = useState()
+
+  useEffect(() => {
+    getProfileData()
+  }, [])
+  
 
   const getProfileData = () => {
     const bearer_token = JSON.parse(localStorage.getItem('access_token'))
@@ -27,11 +32,7 @@ function Profile() {
       })
   }
 
-  const logoutHandler = () => {
-    localStorage.removeItem("access_token")
-    setProfileData()
-    console.log("logout successfull !")
-  }
+  
 
 
   return (
@@ -45,9 +46,6 @@ function Profile() {
         </div>
 
       }
-
-      <button className='bg-gray-500 text-white px-3 py-1' onClick={getProfileData}>Get profile data</button>
-      <button className='bg-orange-500 text-white px-3 py-1' onClick={logoutHandler}>Logout</button>
     </div>
   )
 }
